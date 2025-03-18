@@ -3,11 +3,12 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-[SerializeField] private float moveSpeed = 5f;
+[SerializeField] private float moveSpeed = 8f;
     private Animator animator;
 
     void Start() {
-        animator = GetComponent<Animator>(); // Obtener el Animator del personaje
+        // Obtener el Animator del personaje
+        animator = GetComponent<Animator>(); 
     }
 
     void Update()
