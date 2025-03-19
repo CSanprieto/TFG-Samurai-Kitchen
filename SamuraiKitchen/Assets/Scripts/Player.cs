@@ -4,34 +4,35 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 [SerializeField] private float moveSpeed = 8f;
+[SerializeField] private GameInput gameInput;
     private Animator animator;
 
     void Start() {
-        // Obtener el Animator del personaje
+        // Get player animator
         animator = GetComponent<Animator>(); 
     }
 
     void Update()
     {
-        Vector2 inputVector = Vector2.zero;
+        PlayerMove();
 
-        if (Input.GetKey(KeyCode.W)) inputVector.y = +1;
-        if (Input.GetKey(KeyCode.S)) inputVector.y = -1;
-        if (Input.GetKey(KeyCode.A)) inputVector.x = -1;
-        if (Input.GetKey(KeyCode.D)) inputVector.x = +1;
+    }
 
-        inputVector = inputVector.normalized;
+    // Method for control player moving
+    void PlayerMove(){
+        // Get input vector from Game Input
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
         
-        // Mover al personaje
+        // Move player
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
-        // Si hay movimiento, girar el personaje
+        // if there are any move, then rotate player
         if (moveDir != Vector3.zero) {
             transform.forward = moveDir;
         }
 
-        // Control de animaciones con MoveSpeed
+        // control animation speed
         float currentSpeed = moveDir.magnitude * moveSpeed;
         animator.SetFloat("MoveSpeed", currentSpeed);
     }
