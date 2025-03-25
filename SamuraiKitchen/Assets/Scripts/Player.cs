@@ -7,8 +7,9 @@ public class Player : MonoBehaviour
 [SerializeField] private GameInput gameInput;
 
 private bool isWalking;
-
+    // Player variabless
     private Animator animator;
+    private Vector3 lastInteractDir;
 
     void Start() {
         // Get player animator
@@ -19,6 +20,7 @@ private bool isWalking;
     {
 
         PlayerMove();
+        PlayerInteractions();
 
     }
 
@@ -33,6 +35,28 @@ private bool isWalking;
         float playerHeight = 2f;
         float moveDistance = moveSpeed * Time.deltaTime;
         bool canMove =  !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
+
+        // If we can not move 
+        if(!canMove){
+            // check if we can move on X
+            Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
+            canMove =  !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+
+            if(canMove){
+                // It means we can only move on the X
+                moveDir = moveDirX;
+            } else{
+                // cant move on X, try to move on Z
+                Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
+                canMove =  !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+
+                if(canMove){
+                    // we can move only on Z
+                    moveDir = moveDirZ;
+                }
+            }
+
+        }
         
         if(canMove){
             // Move player if we can move
@@ -47,11 +71,29 @@ private bool isWalking;
 
         // Set isWalking value
         isWalking = moveDir != Vector3.zero;
-        Debug.Log("Iswalking? = " + isWalking);
 
         // control animation speed
         float currentSpeed = moveDir.magnitude * moveSpeed;
         animator.SetFloat("MoveSpeed", currentSpeed);
+    }
+
+    private void PlayerInteractions(){
+        // Get input vector from Game Input
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        if(moveDir != Vector3.zero){
+            lastInteractDir = moveDir;
+        }
+
+        // Check if we hit something
+        float interactDistance = 2f;
+        if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance)){
+            Debug.Log(raycastHit.transform);
+        } else{
+            Debug.Log("-");
+        }
+
     }
 
     
