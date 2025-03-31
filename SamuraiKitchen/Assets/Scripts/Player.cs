@@ -1,27 +1,64 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Player : MonoBehaviour
 {
-[SerializeField] private float moveSpeed = 8f;
-[SerializeField] private GameInput gameInput;
+    // Player property
+    public static Player Instance { get; private set;}
+    
 
-private bool isWalking;
-    // Player variabless
+    // Player event to know which counter we have selected
+    public event EventHandler<OnSelectedCounterChangedArgs> OnSelectedCounterChanged;
+    public class OnSelectedCounterChangedArgs : EventArgs {
+        public ClearCounter selectedCounter;
+    }
+    
+    // Serialized fields
+    [SerializeField] private float moveSpeed = 8f;
+    [SerializeField] private GameInput gameInput;
+
+    [SerializeField] private LayerMask countersLayerMask;
+
+    private bool isWalking;
+    // Player variabless 
     private Animator animator;
     private Vector3 lastInteractDir;
 
+    private ClearCounter selectedCounter;
+
+    // Awake method
+    private void Awake()
+    {
+        if(Instance != null){
+            Debug.Log("There are more than one player instances!");
+        }
+
+        Instance = this;
+    }
+
+    // Start method
     void Start() {
         // Get player animator
         animator = GetComponent<Animator>(); 
+        // Get events
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
 
+    // Update method
     void Update()
     {
 
         PlayerMove();
         PlayerInteractions();
 
+    }
+
+    // Handle interact event
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e){
+        if(selectedCounter != null){
+            selectedCounter.Interact();
+        }
     }
 
     // Method for control player moving
@@ -77,6 +114,8 @@ private bool isWalking;
         animator.SetFloat("MoveSpeed", currentSpeed);
     }
 
+
+    // Method to handle interaction
     private void PlayerInteractions(){
         // Get input vector from Game Input
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
@@ -88,13 +127,34 @@ private bool isWalking;
 
         // Check if we hit something
         float interactDistance = 2f;
-        if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance)){
-            Debug.Log(raycastHit.transform);
+        if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask)){
+            // Check for the object we are facing
+            if(raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)){
+                // Has clear counter
+                if(clearCounter != selectedCounter){
+                    SetSelectedCounter(clearCounter);
+
+                }
+            }
+            else{
+                SetSelectedCounter(null);
+            }
         } else{
-            Debug.Log("-");
-        }
+           SetSelectedCounter(null);
+        } 
 
     }
 
+
+    // Method to set the selected counter
+    private void SetSelectedCounter( ClearCounter selectedCounter){
+        this.selectedCounter = selectedCounter;
+
+                    // Launch selected counter event
+                    OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedArgs{
+                        selectedCounter = selectedCounter
+                    });
+    }
+    
     
 }
