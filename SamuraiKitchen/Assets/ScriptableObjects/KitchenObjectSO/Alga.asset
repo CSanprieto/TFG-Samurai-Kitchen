@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f3c524eaf8e5d468f9d59f2021dd5e, type: 3}
   m_Name: Alga
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1399400169284555282, guid: b1a11645bc09f7d488dcde87b26e7c9e, type: 3}
-  sprite: {fileID: 21300000, guid: 5cbef3076b2423e43b54ad931db76cdb, type: 3}
+  prefab: {fileID: 5648551447197937222, guid: 85668e5123c23134383660961b63126c, type: 3}
+  sprite: {fileID: 21300000, guid: 9657bae60c8b9584695f83ddd23b5bbb, type: 3}
   objectName: Alga

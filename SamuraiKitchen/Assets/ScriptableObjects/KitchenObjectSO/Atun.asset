@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f3c524eaf8e5d468f9d59f2021dd5e, type: 3}
   m_Name: Atun
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2763221984745844434, guid: 1e6713feb5ac7044d8336fd08f831344, type: 3}
-  sprite: {fileID: 21300000, guid: 3552033a2bc398244ad7d598e212ec1e, type: 3}
+  prefab: {fileID: 6783274958092178389, guid: 505d91ebb15c91e45994a6e3e9d21e36, type: 3}
+  sprite: {fileID: 21300000, guid: e325118000c414947b376a3577af2d40, type: 3}
   objectName: Atun
