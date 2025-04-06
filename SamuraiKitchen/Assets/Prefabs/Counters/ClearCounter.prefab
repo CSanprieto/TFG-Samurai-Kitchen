@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163b9964ccea0934887e179ab7ab47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ricePrefab: {fileID: 6015298592584163711, guid: 6fb0f47a0217c7542b18b1adcdbf43d4, type: 3}
+  kitcheObjectSO: {fileID: 11400000, guid: a49d5f18d1d0c114483a6ad508b5c2cb, type: 2}
   counterTopPoint: {fileID: 1290597619577056170}
 --- !u!4 &9123981554231278804 stripped
 Transform:
