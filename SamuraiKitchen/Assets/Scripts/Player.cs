@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     }
     
     // Serialized fields
-    [SerializeField] private float moveSpeed = 8f;
+    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
