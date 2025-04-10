@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     // Player event to know which counter we have selected
     public event EventHandler<OnSelectedCounterChangedArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedArgs : EventArgs {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     }
     
     // Serialized fields
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private Animator animator;
     private Vector3 lastInteractDir;
 
-    private ClearCounter selectedCounter;
+    private BaseCounter selectedCounter;
 
     private KitchenObject kitchenObject;
 
@@ -131,10 +131,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         float interactDistance = 2f;
         if(Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask)){
             // Check for the object we are facing
-            if(raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)){
+            if(raycastHit.transform.TryGetComponent(out BaseCounter baseCounter)){
                 // Has clear counter
-                if(clearCounter != selectedCounter){
-                    SetSelectedCounter(clearCounter);
+                if(baseCounter != selectedCounter){
+                    SetSelectedCounter(baseCounter);
 
                 }
             }
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
 
     // Method to set the selected counter
-    private void SetSelectedCounter( ClearCounter selectedCounter){
+    private void SetSelectedCounter( BaseCounter selectedCounter){
         this.selectedCounter = selectedCounter;
 
                     // Launch selected counter event
