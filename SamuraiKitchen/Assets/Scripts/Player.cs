@@ -45,6 +45,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         animator = GetComponent<Animator>(); 
         // Get events
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnUseItemAction += GameInput_OnUseItemAction;
     }
 
     // Update method
@@ -60,6 +61,13 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private void GameInput_OnInteractAction(object sender, System.EventArgs e){
         if(selectedCounter != null){
             selectedCounter.Interact(this);
+        }
+    }
+
+    // Handle use item event
+    private void GameInput_OnUseItemAction(object sender, System.EventArgs e){
+        if(selectedCounter != null){
+            selectedCounter.UseItem(this);
         }
     }
 

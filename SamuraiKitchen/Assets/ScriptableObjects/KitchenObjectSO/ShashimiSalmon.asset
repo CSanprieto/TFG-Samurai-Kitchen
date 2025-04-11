@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f3c524eaf8e5d468f9d59f2021dd5e, type: 3}
-  m_Name: Salmon
+  m_Name: ShashimiSalmon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6783274958092178389, guid: 4b6d8788b54314a4aba29c415f766e45, type: 3}
-  sprite: {fileID: 21300000, guid: c4c57dd1db85bd2438c7d3f53df18d7d, type: 3}
-  objectName: Salmon
+  prefab: {fileID: 6783274958092178389, guid: 3078434762e65f04699202a909756a26, type: 3}
+  sprite: {fileID: 0}
+  objectName: ShashimiSalmon
