@@ -6,9 +6,6 @@ public class KitcheObjectSO : ScriptableObject
 {
     public Transform prefab;
     public Sprite sprite;
-    public String objectName;
-
-
-    
+    public String objectName;   
 
 }
