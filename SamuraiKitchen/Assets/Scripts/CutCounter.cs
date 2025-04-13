@@ -54,13 +54,13 @@ public class CutCounter : BaseCounter
             cuttingProgress++;
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitcheObjectSO());
 
-                    // Launch progress event
-                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventsArgs{
-                        progressNormalized = (float) cuttingProgress / cuttingRecipeSO.cuttingProgressMax
-                    });
+                // Launch progress event
+                OnProgressChanged?.Invoke(this, new OnProgressChangedEventsArgs{
+                    progressNormalized = (float) cuttingProgress / cuttingRecipeSO.cuttingProgressMax
+                });
 
-                    // Launch cut event
-                    OnCut?.Invoke(this, EventArgs.Empty);
+                // Launch cut event
+                OnCut?.Invoke(this, EventArgs.Empty);
 
             // check if cutting progress is at max
             if(cuttingProgress >= cuttingRecipeSO.cuttingProgressMax){
