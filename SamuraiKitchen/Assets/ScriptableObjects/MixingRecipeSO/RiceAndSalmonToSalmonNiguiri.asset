@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd97552c650b534db191b2bd397aa4d, type: 3}
+  m_Name: RiceAndSalmonToSalmonNiguiri
+  m_EditorClassIdentifier: 
+  input1: {fileID: 11400000, guid: a49d5f18d1d0c114483a6ad508b5c2cb, type: 2}
+  input2: {fileID: 11400000, guid: 138beff906191d64c955fba579600f9b, type: 2}
+  outputItem: {fileID: 11400000, guid: 34a21f3caf87831478955abb35ee60a6, type: 2}
+  mixingProgressMax: 0
