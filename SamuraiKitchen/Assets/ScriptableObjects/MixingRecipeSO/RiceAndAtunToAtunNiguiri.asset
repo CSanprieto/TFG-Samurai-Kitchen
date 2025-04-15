@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bd97552c650b534db191b2bd397aa4d, type: 3}
-  m_Name: RiceAndSalmonToSalmonNiguiri
+  m_Name: RiceAndAtunToAtunNiguiri
   m_EditorClassIdentifier: 
   input1: {fileID: 11400000, guid: a49d5f18d1d0c114483a6ad508b5c2cb, type: 2}
-  input2: {fileID: 11400000, guid: 138beff906191d64c955fba579600f9b, type: 2}
-  outputItem: {fileID: 11400000, guid: 34a21f3caf87831478955abb35ee60a6, type: 2}
+  input2: {fileID: 11400000, guid: 7208da517b0ff6040a738a0551d2643b, type: 2}
+  outputItem: {fileID: 11400000, guid: 61ffd09136e71c64ebf1932a7b5c99ce, type: 2}
   mixingProgressMax: 3

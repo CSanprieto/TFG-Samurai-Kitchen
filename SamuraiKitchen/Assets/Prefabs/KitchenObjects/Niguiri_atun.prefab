@@ -54,10 +54,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fd9b9499d9c3b3c4fb15cb3056ff71d4, type: 2}
     - target: {fileID: 919132149155446097, guid: efc33615ccf0a8e43bea22da16548e28, type: 3}
       propertyPath: m_Name
-      value: Niguiri de atun
+      value: Niguiri_atun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: efc33615ccf0a8e43bea22da16548e28, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7348237287526668768}
   m_SourcePrefab: {fileID: 100100000, guid: efc33615ccf0a8e43bea22da16548e28, type: 3}
+--- !u!1 &4596939441143079586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: efc33615ccf0a8e43bea22da16548e28, type: 3}
+  m_PrefabInstance: {fileID: 3678022255236734963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7348237287526668768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596939441143079586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3493b7cdc445c4e984d7eec4f474ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kitcheObjectSO: {fileID: 11400000, guid: 61ffd09136e71c64ebf1932a7b5c99ce, type: 2}
