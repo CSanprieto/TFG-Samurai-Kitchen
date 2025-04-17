@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MixRecipeSO", menuName = "Scriptable Objects/MixRecipeSO")]
-public class MixRecipeSO : ScriptableObject
+[CreateAssetMenu(fileName = "NiguiriRecipeSO", menuName = "Scriptable Objects/NiguiriRecipeSO")]
+public class NiguiriRecipeSO : ScriptableObject
 {
     public KitcheObjectSO input1;
     public KitcheObjectSO input2;

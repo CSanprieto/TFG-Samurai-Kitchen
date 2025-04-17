@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 
-public class MixCounter : BaseCounter
+public class NiguiriCounter : BaseCounter
 {
-    [SerializeField] private MixRecipeSO[] mixRecipeSOArray;
+    [SerializeField] private NiguiriRecipeSO[] mixRecipeSOArray;
 
     public class OnProgressChangedEventsArgs : EventArgs{
         public float progressNormalized;
@@ -51,7 +51,7 @@ public override void Interact(Player player){
             KitcheObjectSO counterObjectSO = GetKitchenObject().GetKitcheObjectSO();
             KitcheObjectSO playerObjectSO = player.GetKitchenObject().GetKitcheObjectSO();
 
-            MixRecipeSO recipe = GetMixRecipeWithInputs(counterObjectSO, playerObjectSO);
+            NiguiriRecipeSO recipe = GetMixRecipeWithInputs(counterObjectSO, playerObjectSO);
             if (recipe != null){
                 // Combinación válida, dejar el ingrediente del jugador en el counter
                 player.GetKitchenObject().SetKitchenObjectParent(this);
@@ -66,7 +66,7 @@ public override void Interact(Player player){
 
  
 private bool IsIngredientPartOfAnyRecipe(KitcheObjectSO input){
-    foreach (MixRecipeSO recipe in mixRecipeSOArray){
+    foreach (NiguiriRecipeSO recipe in mixRecipeSOArray){
         if (recipe.input1 == input || recipe.input2 == input){
             return true;
         }
@@ -74,8 +74,8 @@ private bool IsIngredientPartOfAnyRecipe(KitcheObjectSO input){
     return false;
 }
 
-private MixRecipeSO GetMixRecipeWithInputs(KitcheObjectSO first, KitcheObjectSO second){
-    foreach(MixRecipeSO recipe in mixRecipeSOArray){
+private NiguiriRecipeSO GetMixRecipeWithInputs(KitcheObjectSO first, KitcheObjectSO second){
+    foreach(NiguiriRecipeSO recipe in mixRecipeSOArray){
         if((recipe.input1 == first && recipe.input2 == second) ||
            (recipe.input1 == second && recipe.input2 == first)){
             return recipe;
@@ -103,7 +103,7 @@ public override void UseItem(Player player){
 
         mixingProgress++;
         ShowPompaEffect();
-        MixRecipeSO mixRecipeSO = GetMixRecipeWithInputs(obj1, obj2);
+        NiguiriRecipeSO mixRecipeSO = GetMixRecipeWithInputs(obj1, obj2);
 
         // Lanzar evento de progreso
         OnProgressChanged?.Invoke(this, new OnProgressChangedEventsArgs {
@@ -134,7 +134,7 @@ public override void UseItem(Player player){
 
     // Check the received item and return the output item
     private KitcheObjectSO GetOutPutItemForInputItem(KitcheObjectSO inputKitchenObjectSO1, KitcheObjectSO inputKitchenObjectSO2){
-        MixRecipeSO mixRecipeSO = GetMixRecipeWithInputs(inputKitchenObjectSO1, inputKitchenObjectSO2);
+        NiguiriRecipeSO mixRecipeSO = GetMixRecipeWithInputs(inputKitchenObjectSO1, inputKitchenObjectSO2);
         if(mixRecipeSO != null){
             Debug.Log("Recipe valid for given ingredientes returning output item!");
             return mixRecipeSO.outputItem;

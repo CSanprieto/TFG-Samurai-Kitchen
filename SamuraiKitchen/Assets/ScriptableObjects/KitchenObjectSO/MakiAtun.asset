@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f3c524eaf8e5d468f9d59f2021dd5e, type: 3}
+  m_Name: MakiAtun
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1842368612841840603, guid: f71e92c86e8f8c54386637aad18814c4, type: 3}
+  sprite: {fileID: 21300000, guid: 7278e8ff229daaf468ea6394dee28390, type: 3}
+  objectName: MakiAtun
