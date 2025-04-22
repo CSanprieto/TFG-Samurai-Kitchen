@@ -40,7 +40,17 @@ public class CutCounter : BaseCounter
             
         } else{
             // There is an object in the counter, we want to give it to the player if he is not carrying something
-            if(!player.HasKitchenObject()){
+            if(player.HasKitchenObject()){
+                // Player is carrying something
+                if(player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)){
+                    // Player is holding a plate
+                    if(plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitcheObjectSO())){
+                        GetKitchenObject().DestroySelf();
+                    }    
+                }
+               
+            }else{
+                // Player is not carriying something
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
 
