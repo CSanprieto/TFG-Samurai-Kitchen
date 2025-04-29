@@ -56,8 +56,21 @@ public override void Interact(Player player){
                 // Combinación válida, dejar el ingrediente del jugador en el counter
                 player.GetKitchenObject().SetKitchenObjectParent(this);
                 mixingProgress = 0;
-                thereAre2ValidIngredients = true;
-                
+                thereAre2ValidIngredients = true;   
+            } else{
+                    if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
+                        // Mover el kitchenObject (nigiri, maki, etc.) al plato
+                        KitchenObject kitchenObject = GetKitchenObject(); // el objeto final que estaba en el counter
+                    
+                        plateKitchenObject.SetKitchenObject(kitchenObject);
+                        
+                        // Cambiar el parent visual para que siga el punto del plato
+                        kitchenObject.transform.parent = plateKitchenObject.GetKitchenObjectFollowTransform();
+                        kitchenObject.transform.localPosition = Vector3.zero; // centrado en el holdPoint del plato
+                    
+                        // Limpiar el counter
+                        ClearKitchenObject();
+                    }
             }
             // Si no forman receta, no hacer nada
         }
@@ -123,9 +136,10 @@ public override void UseItem(Player player){
 
             // Instanciar el nuevo objeto mezclado
             KitcheObjectSO outputKitchenObjectSO = GetOutPutItemForInputItem(obj1, obj2);
-            KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+            KitchenObject kitchenObject = KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
             mixingProgress = 0;
             thereAre2ValidIngredients = false;
+            SetKitchenObject(kitchenObject);
         }
     }
 }

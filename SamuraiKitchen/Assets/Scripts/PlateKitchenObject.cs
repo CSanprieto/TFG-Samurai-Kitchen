@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlateKitchenObject : KitchenObject
+public class PlateKitchenObject : KitchenObject , IKitchenObjectParent
 {   
 
     // Valid recipes that can go on a plate
     [SerializeField] private List<KitcheObjectSO> validKitchenSOList;
     // List of kitchen objects SO
     private List<KitcheObjectSO> kitcheObjectSOList;
+
+    private KitchenObject kitchenObject;
+
+        [SerializeField] private Transform kitchenObjectHoldPoint;
+
 
     private void Awake()
     {
@@ -33,4 +38,23 @@ public class PlateKitchenObject : KitchenObject
 
     }
 
+    public Transform GetKitchenObjectFollowTransform(){
+        return kitchenObjectHoldPoint;
+    }
+
+    public void SetKitchenObject(KitchenObject kitchenObject){
+        this.kitchenObject = kitchenObject;
+    }
+
+    public KitchenObject GetKitchenObject(){
+        return kitchenObject;
+    }
+
+    public void ClearKitchenObject(){
+        kitchenObject = null;
+    }
+
+    public bool HasKitchenObject(){
+        return kitchenObject != null;
+    }
 }

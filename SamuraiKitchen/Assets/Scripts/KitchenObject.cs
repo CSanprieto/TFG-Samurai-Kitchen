@@ -11,23 +11,27 @@ public class KitchenObject : MonoBehaviour
         return kitcheObjectSO;
     }
 
-    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent){
-
-        if(this.kitchenObjectParent != null){
-            this.kitchenObjectParent.ClearKitchenObject();
-        }
-
-        this.kitchenObjectParent = kitchenObjectParent;
-
-        if(kitchenObjectParent.HasKitchenObject()){
-            Debug.LogWarning("IKitchenObjectParent already has a kitchen object!");
-        }
-
-        kitchenObjectParent.SetKitchenObject(this);
-        transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
-        transform.localPosition = Vector3.zero;
-        
+public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
+    if (this.kitchenObjectParent != null) {
+        this.kitchenObjectParent.ClearKitchenObject();
     }
+
+    this.kitchenObjectParent = kitchenObjectParent;
+
+    if (kitchenObjectParent.HasKitchenObject()) {
+        Debug.LogWarning("IKitchenObjectParent already has a kitchen object!");
+    }
+
+    kitchenObjectParent.SetKitchenObject(this);
+    transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
+
+    // Ahora controlamos si es un Plate
+    if (this is PlateKitchenObject) {
+        transform.localPosition = new Vector3(0f, -0.3f, 0f); // ajustá la altura que prefieras
+    } else {
+        transform.localPosition = Vector3.zero;
+    }
+}
 
     public IKitchenObjectParent GetKitchenObjectParent(){
         return kitchenObjectParent;

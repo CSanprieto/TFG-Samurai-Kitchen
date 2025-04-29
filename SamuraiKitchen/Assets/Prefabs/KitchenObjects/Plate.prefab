@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4245970123473586731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5267792624395852598}
+  m_Layer: 0
+  m_Name: holdpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5267792624395852598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4245970123473586731}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.72917086, z: -0, w: -0.6843317}
+  m_LocalPosition: {x: 0, y: 0.049000002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6783274958092178389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4511158076602037529
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +62,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 868905195537028004}
+  - {fileID: 5267792624395852598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 453.634, z: 0}
 --- !u!114 &-6591437883509367957
@@ -54,6 +86,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c376cc6330e91bf44a0a53749693956f, type: 2}
   - {fileID: 11400000, guid: 32e3c3a8189f3af43899b47d91bc2dff, type: 2}
   - {fileID: 11400000, guid: a49d5f18d1d0c114483a6ad508b5c2cb, type: 2}
+  kitchenObjectHoldPoint: {fileID: 5267792624395852598}
 --- !u!1001 &4099673831415825700
 PrefabInstance:
   m_ObjectHideFlags: 0

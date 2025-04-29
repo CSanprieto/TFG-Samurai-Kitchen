@@ -55,6 +55,24 @@ public override void Interact(Player player){
             KitchenObject[] kitchenObjects = GetComponentsInChildren<KitchenObject>();
             Debug.Log("hay items en el counter : " + kitchenObjects.Length);
             if (kitchenObjects.Length == 1){
+
+
+                        if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
+    
+                        // Mover el kitchenObject (nigiri, maki, etc.) al plato
+                        KitchenObject kitchenObject = GetKitchenObject(); // el objeto final que estaba en el counter
+                    
+                        plateKitchenObject.SetKitchenObject(kitchenObject);
+                        
+                        // Cambiar el parent visual para que siga el punto del plato
+                        kitchenObject.transform.parent = plateKitchenObject.GetKitchenObjectFollowTransform();
+                        kitchenObject.transform.localPosition = Vector3.zero; // centrado en el holdPoint del plato
+                    
+                        // Limpiar el counter
+                        ClearKitchenObject();
+                    }
+
+
                 // Hay 1 ingrediente en el counter
                 Debug.Log("hay solo un item en el counter : " + kitchenObjects.Length);
                 KitcheObjectSO obj1 = kitchenObjects[0].GetKitcheObjectSO();
@@ -189,9 +207,10 @@ public override void UseItem(Player player){
 
             // Instanciar el nuevo objeto mezclado
             KitcheObjectSO outputKitchenObjectSO = GetOutPutItemForInputItem(obj1, obj2, obj3);
-            KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+            KitchenObject kitchenObject = KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
             mixingProgress = 0;
             thereAre3ValidIngredients = false;
+            SetKitchenObject(kitchenObject);
         }
     }
 }

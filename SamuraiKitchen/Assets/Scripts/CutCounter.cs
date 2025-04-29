@@ -43,10 +43,17 @@ public class CutCounter : BaseCounter
             if(player.HasKitchenObject()){
                 // Player is carrying something
                 if(player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)){
-                    // Player is holding a plate
-                    if(plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitcheObjectSO())){
-                        GetKitchenObject().DestroySelf();
-                    }    
+                     // Mover el kitchenObject (nigiri, maki, etc.) al plato
+                        KitchenObject kitchenObject = GetKitchenObject(); // el objeto final que estaba en el counter
+                    
+                        plateKitchenObject.SetKitchenObject(kitchenObject);
+                        
+                        // Cambiar el parent visual para que siga el punto del plato
+                        kitchenObject.transform.parent = plateKitchenObject.GetKitchenObjectFollowTransform();
+                        kitchenObject.transform.localPosition = Vector3.zero; // centrado en el holdPoint del plato
+                    
+                        // Limpiar el counter
+                        ClearKitchenObject();
                 }
                
             }else{
@@ -77,7 +84,8 @@ public class CutCounter : BaseCounter
                 // cut item so first destroy it and instance the new cut object
                 KitcheObjectSO outputKitchenObjectSO = GetOutPutItemForInputItem(GetKitchenObject().GetKitcheObjectSO());
                 GetKitchenObject().DestroySelf();
-                KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+                KitchenObject kitchenObject = KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+                SetKitchenObject(kitchenObject);
             }
         } 
     }
