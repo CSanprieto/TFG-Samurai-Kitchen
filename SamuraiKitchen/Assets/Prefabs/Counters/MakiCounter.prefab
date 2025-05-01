@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 940628842447771867}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9999999, z: -0, w: -0.00055313105}
-  m_LocalPosition: {x: 0.064, y: 2.2446284, z: 0.189}
+  m_LocalPosition: {x: 0.065, y: 2.2446284, z: -0.429}
   m_LocalScale: {x: 1.0170493, y: 1.0170496, z: 1.0170493}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1122948501722101251}
   - component: {fileID: 3238289510052864944}
   - component: {fileID: 6176835218735292861}
-  - component: {fileID: 1240240347936134963}
+  - component: {fileID: 6491771469674227309}
   m_Layer: 5
   m_Name: ProgressBarUI
   m_TagString: Untagged
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1240240347936134963
+--- !u!114 &6491771469674227309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,11 +144,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1508724808905715688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63052d3027a52b741867418f3a49c442, type: 3}
+  m_Script: {fileID: 11500000, guid: ac5ada235bacaa541aa98566d57cdc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   barImage: {fileID: 1150675177452534121}
-  niguiriCounter: {fileID: 2154276666991327312, guid: 7968879b08fb68243b8a33a1516babeb, type: 3}
+  makiCounter: {fileID: 1670854595306064143}
 --- !u!1 &2086100147081614781
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086100147081614781}
   m_LocalRotation: {x: -0, y: -0.9999999, z: -0, w: -0.00055313105}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5542922}
+  m_LocalPosition: {x: 0, y: 0, z: -0.373}
   m_LocalScale: {x: 1.0170493, y: 1.0170496, z: 1.0170493}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.34681407, y: 2.340231}
+  m_AnchoredPosition: {x: 0.348, y: 2.340231}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6131668191341540824

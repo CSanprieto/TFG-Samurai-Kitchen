@@ -27,7 +27,8 @@ public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
 
     // Ahora controlamos si es un Plate
     if (this is PlateKitchenObject) {
-        transform.localPosition = new Vector3(0f, -0.3f, 0f); // ajustá la altura que prefieras
+        // The plate appear a bit down to avoid clipping with other objects
+        transform.localPosition = new Vector3(0f, -0.1f, 0f); 
     } else {
         transform.localPosition = Vector3.zero;
     }

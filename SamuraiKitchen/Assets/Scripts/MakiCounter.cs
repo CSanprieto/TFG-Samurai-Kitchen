@@ -199,7 +199,6 @@ public override void UseItem(Player player){
 
         if (mixingProgress >= mixRecipeSO.mixingProgressMax){
             
-
             // Destruir los objetos existentes
             foreach (KitchenObject ko in kitchenObjects){
                 ko.DestroySelf();
