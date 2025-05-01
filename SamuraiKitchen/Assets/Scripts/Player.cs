@@ -122,6 +122,12 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         // control animation speed
         float currentSpeed = moveDir.magnitude * moveSpeed;
         animator.SetFloat("MoveSpeed", currentSpeed);
+
+        // Add ecape to quit the game
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 
 
