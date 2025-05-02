@@ -8,6 +8,9 @@ public class DeliveryCounter : BaseCounter
         if(player.HasKitchenObject()){
             
             if(player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)){
+
+                // Check if plate has valid recipe
+                DeliveryManager.Instance.DeliverRecipe(plateKitchenObject);
                 // Only accept plates
                 player.GetKitchenObject().DestroySelf();
             }
