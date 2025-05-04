@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 684210003912404542, guid: 8a377f540748264488d17ce00ff279e1, type: 3}
   sprite: {fileID: 21300000, guid: 9d9107085c3d15a46ad9eafce03e97c3, type: 3}
-  objectName: MakiSalmon
+  objectName: Salmon maki

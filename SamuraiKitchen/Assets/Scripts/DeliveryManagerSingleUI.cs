@@ -16,7 +16,7 @@ public class DeliveryManagerSingleUI : MonoBehaviour
     }
 
     public void SetKitchenObjectSO(KitcheObjectSO kitcheObjectSO){
-        recipeNameText.text = kitcheObjectSO.name;
+        recipeNameText.text = kitcheObjectSO.objectName;
 
                 // Clean template
         foreach (Transform child in iconContainer){

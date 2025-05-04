@@ -11,6 +11,9 @@ public class DeliveryManager : MonoBehaviour
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
 
+    public event EventHandler OnRecipeSuccess;
+    public event EventHandler OnRecipeFailed;
+
     [SerializeField] List<KitcheObjectSO> recipeList;
     private float spawnRecipeTimer;
     private float spawnRecipeTimerMax = 5f;
@@ -51,10 +54,12 @@ public class DeliveryManager : MonoBehaviour
                 // Plate item is on the waiting recipes
                 waitingRecipeList.RemoveAt(i);
                 OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+                OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
                 return;
             }
         }
 
+        OnRecipeFailed?.Invoke(this, EventArgs.Empty);
         Debug.Log("Wrong recipe delivered!");
     }
 

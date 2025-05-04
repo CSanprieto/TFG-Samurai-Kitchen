@@ -13,6 +13,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public class OnSelectedCounterChangedArgs : EventArgs {
         public BaseCounter selectedCounter;
     }
+
+    public event EventHandler OnPickedSomething;
     
     // Serialized fields
     [SerializeField] private float moveSpeed = 5f;
@@ -178,6 +180,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     public void SetKitchenObject(KitchenObject kitchenObject){
         this.kitchenObject = kitchenObject;
+
+        if(kitchenObject != null){
+            OnPickedSomething?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public KitchenObject GetKitchenObject(){

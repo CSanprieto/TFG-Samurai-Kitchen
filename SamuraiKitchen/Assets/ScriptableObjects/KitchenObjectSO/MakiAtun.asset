@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1842368612841840603, guid: f71e92c86e8f8c54386637aad18814c4, type: 3}
   sprite: {fileID: 21300000, guid: 7278e8ff229daaf468ea6394dee28390, type: 3}
-  objectName: MakiAtun
+  objectName: Tuna Maki

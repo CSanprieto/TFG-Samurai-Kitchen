@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6783274958092178389, guid: acfb36b86c0c9aa429158401728cce1a, type: 3}
   sprite: {fileID: 21300000, guid: 26d0e27cf149ca747abb3d5045d3c897, type: 3}
-  objectName: ShashimiAtun
+  objectName: Tuna Sashimi

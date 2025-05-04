@@ -12,6 +12,7 @@ public class NiguiriCounter : BaseCounter
     }
 
     public event EventHandler OnMix;
+    public static event EventHandler OnMixSound;
 
     private int mixingProgress;
 
@@ -124,6 +125,7 @@ public override void UseItem(Player player){
         });
 
         OnMix?.Invoke(this, EventArgs.Empty);
+        OnMixSound?.Invoke(this, EventArgs.Empty);
         Instantiate(mixingEffectPrefab, effectSpawnPoint.position, Quaternion.identity);
 
         if (mixingProgress >= mixRecipeSO.mixingProgressMax){

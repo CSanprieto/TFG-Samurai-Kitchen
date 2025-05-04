@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6783274958092178389, guid: 3078434762e65f04699202a909756a26, type: 3}
   sprite: {fileID: 21300000, guid: 43974a2f91099b540ba0efa524187cfe, type: 3}
-  objectName: ShashimiSalmon
+  objectName: Salmon Sashimi

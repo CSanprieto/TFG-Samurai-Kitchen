@@ -12,6 +12,7 @@ public class CutCounter : BaseCounter
     }
 
     public event EventHandler OnCut;
+    public static event EventHandler OnCutSound;
 
     public event EventHandler<OnProgressChangedEventsArgs> OnProgressChanged;
 
@@ -78,6 +79,7 @@ public class CutCounter : BaseCounter
 
                 // Launch cut event
                 OnCut?.Invoke(this, EventArgs.Empty);
+                OnCutSound?.Invoke(this, EventArgs.Empty);
 
             // check if cutting progress is at max
             if(cuttingProgress >= cuttingRecipeSO.cuttingProgressMax){

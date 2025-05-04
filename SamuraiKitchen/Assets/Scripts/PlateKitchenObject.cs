@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,9 @@ public class PlateKitchenObject : KitchenObject , IKitchenObjectParent
 
     private KitchenObject kitchenObject;
 
-        [SerializeField] private Transform kitchenObjectHoldPoint;
+    [SerializeField] private Transform kitchenObjectHoldPoint;
+
+    public static event EventHandler OnAnyItemAdded;
 
 
     private void Awake()
@@ -44,6 +47,10 @@ public class PlateKitchenObject : KitchenObject , IKitchenObjectParent
 
     public void SetKitchenObject(KitchenObject kitchenObject){
         this.kitchenObject = kitchenObject;
+
+        if(kitchenObject != null){
+            OnAnyItemAdded?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public KitchenObject GetKitchenObject(){

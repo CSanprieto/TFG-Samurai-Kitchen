@@ -14,6 +14,7 @@ public class MakiCounter : BaseCounter
     }
 
     public event EventHandler OnMakiMix;
+    public static event EventHandler OnMakiMixSound;
 
     private int mixingProgress;
 
@@ -195,6 +196,7 @@ public override void UseItem(Player player){
         });
 
         OnMakiMix?.Invoke(this, EventArgs.Empty);
+        OnMakiMixSound?.Invoke(this, EventArgs.Empty);
         Instantiate(mixingEffectPrefab, effectSpawnPoint.position, Quaternion.identity);
 
         if (mixingProgress >= mixRecipeSO.mixingProgressMax){

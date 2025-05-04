@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5813368949481249663, guid: 215eafe845ea4074492a1670f4dc7db0, type: 3}
   sprite: {fileID: 21300000, guid: 59886aeb86bd389488e319137601f589, type: 3}
-  objectName: NiguriSalmon
+  objectName: Salmon Nigiri
