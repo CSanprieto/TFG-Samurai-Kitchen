@@ -75,6 +75,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     // Method for control player moving
     void PlayerMove(){
+
+        // avoid player move if game is not playing
+        if(!KitchenGameManager.Instance.IsGamePlaying()) return;
+
         // Get input vector from Game Input
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
