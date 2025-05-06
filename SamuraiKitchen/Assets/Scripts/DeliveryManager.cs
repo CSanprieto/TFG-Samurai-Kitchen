@@ -19,6 +19,8 @@ public class DeliveryManager : MonoBehaviour
     private float spawnRecipeTimerMax = 5f;
     private int recipeMax = 4;
 
+    private int totalRecipesSuccess; 
+
     [SerializeField] List<KitcheObjectSO> waitingRecipeList;
 
     private void Awake()
@@ -55,6 +57,7 @@ public class DeliveryManager : MonoBehaviour
                 waitingRecipeList.RemoveAt(i);
                 OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
                 OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
+                totalRecipesSuccess++;
                 return;
             }
         }
@@ -65,5 +68,9 @@ public class DeliveryManager : MonoBehaviour
 
     public List<KitcheObjectSO> GetwaitingRecipeList(){
         return waitingRecipeList;
+    }
+
+    public int getTotalRecipesSuccess(){
+        return totalRecipesSuccess;
     }
 }
