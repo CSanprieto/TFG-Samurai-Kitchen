@@ -89,4 +89,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3493b7cdc445c4e984d7eec4f474ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitcheObjectSO: {fileID: 11400000, guid: 34a21f3caf87831478955abb35ee60a6, type: 2}
+  kitcheObjectSO: {fileID: 11400000, guid: 626fb4c5cf4fbc44885891b93e7e6378, type: 2}
