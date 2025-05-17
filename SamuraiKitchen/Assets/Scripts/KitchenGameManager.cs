@@ -15,7 +15,7 @@ public class KitchenGameManager : MonoBehaviour
     private float waitingToStartTimer = 1f;
     private float CountdownToStartTimer = 3f;
     private float GamePlayingTimer;
-    private float GamePlayingTimerMax = 180f;
+    private float GamePlayingTimerMax = 10f;
 
     public static KitchenGameManager Instance {private set; get;}
 

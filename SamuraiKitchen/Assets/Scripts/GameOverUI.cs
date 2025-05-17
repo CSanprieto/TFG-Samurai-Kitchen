@@ -1,13 +1,26 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
 
-[SerializeField] private TextMeshProUGUI totalRecipes;
+    [SerializeField] private TextMeshProUGUI totalRecipes;
+
+    [SerializeField] private Button mainMenuButton;
+
+    private void Awake()
+    {
+        
+        mainMenuButton.onClick.AddListener(() => {
+            // Click function to load main menu
+            SceneManager.LoadScene(0);
+        });
+    }
 
 
-        private void Start()
+    private void Start()
     {
         KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;
         Hide();
