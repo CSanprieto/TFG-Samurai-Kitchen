@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
-        public static DeliveryManager Instance {
-        get; private set;}
+    public static DeliveryManager Instance {
+    get; private set;}
 
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
