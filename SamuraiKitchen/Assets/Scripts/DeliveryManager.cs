@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// Class to handle delivery
 public class DeliveryManager : MonoBehaviour
 {
-    public static DeliveryManager Instance {
-    get; private set;}
+    public static DeliveryManager Instance
+    {
+        get; private set;
+    }
 
+    // Delivery events
     public event EventHandler OnRecipeSpawned;
     public event EventHandler OnRecipeCompleted;
-
     public event EventHandler OnRecipeSuccess;
     public event EventHandler OnRecipeFailed;
 
@@ -19,7 +22,7 @@ public class DeliveryManager : MonoBehaviour
     private float spawnRecipeTimerMax = 5f;
     private int recipeMax = 4;
 
-    private int totalRecipesSuccess; 
+    private int totalRecipesSuccess;
 
     [SerializeField] List<KitcheObjectSO> waitingRecipeList;
 
@@ -30,16 +33,16 @@ public class DeliveryManager : MonoBehaviour
 
     }
 
-
     private void Update()
     {
         // We add recipes each 5 seconds
         spawnRecipeTimer -= Time.deltaTime;
-        if(spawnRecipeTimer <= 0f){
+        if (spawnRecipeTimer <= 0f)
+        {
             spawnRecipeTimer = spawnRecipeTimerMax;
 
-            if(waitingRecipeList.Count < recipeMax){
-
+            if (waitingRecipeList.Count < recipeMax)
+            {
                 KitcheObjectSO waitingRecipeSO = recipeList[UnityEngine.Random.Range(0, recipeList.Count)];
                 waitingRecipeList.Add(waitingRecipeSO);
                 OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
@@ -48,11 +51,14 @@ public class DeliveryManager : MonoBehaviour
         }
     }
 
-
-    public void DeliverRecipe(PlateKitchenObject plateKitchenObject){
-        for(int i = 0; i < waitingRecipeList.Count; i++){
+    // Method to handle when a recipe is delivered
+    public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
+    {
+        for (int i = 0; i < waitingRecipeList.Count; i++)
+        {
             KitcheObjectSO kitcheObjectSO = waitingRecipeList[i];
-            if(plateKitchenObject.GetKitchenObject().GetKitcheObjectSO().name.Equals(kitcheObjectSO.name)){
+            if (plateKitchenObject.GetKitchenObject().GetKitcheObjectSO().name.Equals(kitcheObjectSO.name))
+            {
                 // Plate item is on the waiting recipes
                 waitingRecipeList.RemoveAt(i);
                 OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
@@ -66,11 +72,15 @@ public class DeliveryManager : MonoBehaviour
         Debug.Log("Wrong recipe delivered!");
     }
 
-    public List<KitcheObjectSO> GetwaitingRecipeList(){
+    // method to get recipes waiting
+    public List<KitcheObjectSO> GetwaitingRecipeList()
+    {
         return waitingRecipeList;
     }
 
-    public int getTotalRecipesSuccess(){
+    // method to get total recipes to show on game over screen
+    public int getTotalRecipesSuccess()
+    {
         return totalRecipesSuccess;
     }
 }

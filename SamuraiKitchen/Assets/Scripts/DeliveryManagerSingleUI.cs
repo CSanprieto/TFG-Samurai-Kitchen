@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Class to handle single recipes UI on screen
 public class DeliveryManagerSingleUI : MonoBehaviour
 {
 
@@ -15,23 +16,27 @@ public class DeliveryManagerSingleUI : MonoBehaviour
         iconTemplate.gameObject.SetActive(false);
     }
 
-    public void SetKitchenObjectSO(KitcheObjectSO kitcheObjectSO){
+    public void SetKitchenObjectSO(KitcheObjectSO kitcheObjectSO)
+    {
         recipeNameText.text = kitcheObjectSO.objectName;
 
-                // Clean template
-        foreach (Transform child in iconContainer){
-            if(child == iconTemplate){
+        // Clean template
+        foreach (Transform child in iconContainer)
+        {
+            if (child == iconTemplate)
+            {
                 continue;
-                
-            } else{
+
+            }
+            else
+            {
                 Destroy(child.gameObject);
             }
         }
 
-            Transform iconTransform = Instantiate(iconTemplate, iconContainer);
-            iconTransform.gameObject.SetActive(true);
-            iconTransform.GetComponent<Image>().sprite = kitcheObjectSO.sprite;
-    
+        Transform iconTransform = Instantiate(iconTemplate, iconContainer);
+        iconTransform.gameObject.SetActive(true);
+        iconTransform.GetComponent<Image>().sprite = kitcheObjectSO.sprite;
     }
-    
+
 }

@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
 
+// Class for cut counter visual
 public class CutCounterVisual : MonoBehaviour
 {
     private const string CUT = "Cut";
     private Animator animator;
     [SerializeField] private CutCounter cutCounter;
 
+    // Set the cut animation on awake
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -17,7 +19,9 @@ public class CutCounterVisual : MonoBehaviour
         cutCounter.OnCut += CutCounter_OnCut;
     }
 
-    private void CutCounter_OnCut(object sender, System.EventArgs e){
+    // Method to launch the animation
+    private void CutCounter_OnCut(object sender, System.EventArgs e)
+    {
         animator.SetTrigger(CUT);
     }
 }

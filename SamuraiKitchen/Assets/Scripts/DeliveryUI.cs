@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Class to handle succes or error message on recipes delivered
 public class DeliveryUI : MonoBehaviour
 {
 

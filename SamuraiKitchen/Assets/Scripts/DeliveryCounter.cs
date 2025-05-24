@@ -1,13 +1,16 @@
 using UnityEngine;
 
+// Class for the delivery counter
 public class DeliveryCounter : BaseCounter
 {
     public override void Interact(Player player)
     {
         // Check what is holding the player
-        if(player.HasKitchenObject()){
-            
-            if(player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)){
+        if (player.HasKitchenObject())
+        {
+
+            if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+            {
 
                 // Check if plate has valid recipe
                 DeliveryManager.Instance.DeliverRecipe(plateKitchenObject);

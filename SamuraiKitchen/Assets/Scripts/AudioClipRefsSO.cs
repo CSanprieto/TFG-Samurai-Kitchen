@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// This class will have all sounds in different arrays
 [CreateAssetMenu()]
 public class AudioClipRefsSO : ScriptableObject
 {
@@ -10,6 +11,4 @@ public class AudioClipRefsSO : ScriptableObject
     public AudioClip[] trash;
     public AudioClip[] objectDrop;
     public AudioClip[] objectPickup;
-    public AudioClip[] footstep;
-
 }

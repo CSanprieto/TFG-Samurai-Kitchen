@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+// Class to handle recipes UI on screen
 public class DeliveryManagerUI : MonoBehaviour
 {
 
@@ -19,28 +20,35 @@ public class DeliveryManagerUI : MonoBehaviour
         UpdateVisual();
     }
 
-    private void DeliveryManager_OnRecipeSpawned(object sender, System.EventArgs e){
+    private void DeliveryManager_OnRecipeSpawned(object sender, System.EventArgs e)
+    {
         UpdateVisual();
     }
 
-    private void DeliveryManager_OnRecipeCompleted(object sender, System.EventArgs e){
-         UpdateVisual();
+    private void DeliveryManager_OnRecipeCompleted(object sender, System.EventArgs e)
+    {
+        UpdateVisual();
     }
 
     private void UpdateVisual()
     {
         // Clean template
-        foreach (Transform child in container){
-            if(child == recipeTemplate){
+        foreach (Transform child in container)
+        {
+            if (child == recipeTemplate)
+            {
                 continue;
-                
-            } else{
+
+            }
+            else
+            {
                 Destroy(child.gameObject);
             }
         }
 
 
-        foreach(KitcheObjectSO kitcheObjectSO in DeliveryManager.Instance.GetwaitingRecipeList()){
+        foreach (KitcheObjectSO kitcheObjectSO in DeliveryManager.Instance.GetwaitingRecipeList())
+        {
             Transform recipeTransform = Instantiate(recipeTemplate, container);
             recipeTransform.gameObject.SetActive(true);
             recipeTransform.GetComponent<DeliveryManagerSingleUI>().SetKitchenObjectSO(kitcheObjectSO);

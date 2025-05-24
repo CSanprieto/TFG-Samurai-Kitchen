@@ -1,65 +1,74 @@
 using UnityEngine;
 
+// Class for empty counters, player can put here kitchen objects
 public class ClearCounter : BaseCounter
 {
-
-    public override void Interact(Player player){
+    
+    // Method to handle interact
+    public override void Interact(Player player)
+    {
         // Check if there is any object in the counter
-        if(!HasKitchenObject()){
-
+        if (!HasKitchenObject())
+        {
             // If player is carriying something
-            if(player.HasKitchenObject()){
+            if (player.HasKitchenObject())
+            {
                 player.GetKitchenObject().SetKitchenObjectParent(this);
             }
-            
-        } else{
-            // There is a kitchen object here
-            if(player.HasKitchenObject()){
 
+        }
+        else
+        {
+            // There is a kitchen object in the counter
+            if (player.HasKitchenObject()){
                 // Player is carrying something
-                if(player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)){
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                {
                     // Player is holding a plate
-                    if(plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitcheObjectSO())){
+                    if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitcheObjectSO()))
+                    {
+                        // If item is valid to put in a plate
+                        KitchenObject kitchenObject = GetKitchenObject();
 
-                        
-                        // Mover el kitchenObject (nigiri, maki, etc.) al plato
-                        KitchenObject kitchenObject = GetKitchenObject(); 
-                    
                         plateKitchenObject.SetKitchenObject(kitchenObject);
-                        
-                        // Cambiar el parent visual para que siga el punto del plato
+
+                        // Change parent to met the plate point
                         kitchenObject.transform.parent = plateKitchenObject.GetKitchenObjectFollowTransform();
-                        kitchenObject.transform.localPosition = Vector3.zero; // centrado en el holdPoint del plato
-                    
-                        // Limpiar el counter
+                        kitchenObject.transform.localPosition = Vector3.zero;
+
+                        // Clean counter
                         ClearKitchenObject();
                     }
-                    
-                } else{
-                    // Player is not carriying a plate but something more
-                    if(GetKitchenObject().TryGetPlate(out plateKitchenObject)){
-                        // The counter is holding a plate
-                        if(plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitcheObjectSO())){
 
-                        KitchenObject kitchenObject = player.GetKitchenObject();
-                        plateKitchenObject.SetKitchenObject(kitchenObject);
-                        
-                        // Cambiar el parent visual para que siga el punto del plato
-                        kitchenObject.transform.parent = plateKitchenObject.GetKitchenObjectFollowTransform();
-                        kitchenObject.transform.localPosition = Vector3.zero; // centrado en el holdPoint del plato
-                        player.ClearKitchenObject();
+                }
+                else
+                {
+                    // Player is not carriying a plate but something more
+                    if (GetKitchenObject().TryGetPlate(out plateKitchenObject))
+                    {
+                        // The counter is holding a plate
+                        if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitcheObjectSO()))
+                        {
+
+                            KitchenObject kitchenObject = player.GetKitchenObject();
+                            plateKitchenObject.SetKitchenObject(kitchenObject);
+
+                            // Change parent to met the plate point
+                            kitchenObject.transform.parent = plateKitchenObject.GetKitchenObjectFollowTransform();
+                            kitchenObject.transform.localPosition = Vector3.zero;
+                            player.ClearKitchenObject();
                         }
                     }
                 }
 
-                
-            } else{
 
+            }
+            else
+            {
                 // There is an object in the counter, we want to give it to the player if he is not carrying something
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
 
         }
     }
-
 }
